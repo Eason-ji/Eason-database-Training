@@ -1,0 +1,33 @@
+进入shell中进行测试，python manage.py shell
+导入模块 from book model import BookInfo
+增加数据:BookIfo.objects.create(属性1=xxx，属性2=xxx);
+修改数据：BookIfo.objects.filter(id=1).update(属性1=xxx，属性2=xxx)
+删除数据：BookIfo.objects.filter(id=1).delete()
+查看数据：
+	过滤查询：
+	filter
+	  BookInfo.objects.filter(属性1__运算符=值)  返回一个列表
+	  contains='x'--字段中带有x	endwith=x 字段最后一个字符为x	isnull=True 字段为空
+	  gt=x--字段大于x	gte=x--字段大于等于x	lt=x--字段小于x	 lte=x--字段小于等于x
+	exclude
+	  BookInfo.objects.exclude(属性名=xxx)
+	get
+	  BookInfo.objects.get(属性名=xxx)  
+	  进阶版：
+		try：
+		    BookInfo.objects.get(属性名=xxx)
+		except BookInfo.DoesNoteExist as e:
+		    print(e)
+		
+	F对象
+	  BookInfo.objects.filter(属性名1__运算符=F(属性2=值)) 用来
+	Q对象
+	  BookInfo.objects.filter(Q(属性1__运算符=值)&Q(属性1__运算符=值)) &=AND
+	  BookInfo.objects.filter(Q(属性1__运算符=值)|Q(属性1__运算符=值)) |=OR
+	  BookInfo.objects.filter(~Q(属性1__运算符=值))    ~=NOT
+	聚合函数
+	  from django.db.models import Max,Min,Count,Avg
+	  BookInfo.objects.aggregate(sum('属性名'))
+	排序
+	  BookInfo.objects.all().order_by('属性名')    升序
+	  BookInfo.objects.all().order_by('-属性名')   降序
