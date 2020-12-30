@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>测试vue</title>
+
+
+</head>
+<body>
+    <div id='app'>
+        <a href="#">{{msg}}</a>
+        <h1>{{name}}</h1>    
+        <a v-bind:href="address">传智播客</a>  <!-- 标签中的属性的值如果想要使用变量，则需要在属性名前添加v-bind-->
+        
+        <hr> <!-- 水平线 -->
+        <a href="#" v-if='isLogin'>个人中心</a>   
+        <span v-else>登录</span>
+        <!-- v-if若为true则显示值，false则显示else的值 -->
+        
+        <hr>
+        <!-- level=1国王，level=2皇亲，level=3国戚，level=4大臣，否则平民 -->
+        <span v-if="level == 1">国王</span>
+        <span v-else-if="level == 2">皇亲</span>
+        <span v-else-if="level == 3">国戚</span>
+        <span v-else-if="level == 4">大臣</span>
+        <span v-else>平民</span>
+
+        <hr>
+        <!-- v-show 和v-if大致相同，不支持v-else，元素一直是存在的-->
+        <span v-if= 'seen'>if</span>
+        <span v-show='seen'>show</span>
+        <!-- 当seen为false时二者都不会显示，但是if所对应的值为none，而show对应的时还是存在的，意味着show可以减少客户端的性能开销 -->
+    </div>
+</body>
+<script type="text/javascript">
+    // var 变量的声明
+    // vm 变量名
+    // new 关键字
+    // Vue() 创建实例对象
+    // 我们定义的vue实例要和HTML的容器关联
+    var vm = new Vue({
+        el:'#app',         // 意思是获取MTM中标签id为app的元素
+        data:{             // data 用于存放变量
+            msg:'hello vue',    // msg 可以理解为变量名
+            name:'itcast',       // 每一行一条数据，每行用逗号分开
+            address:'http://www.itcast.cn',
+            isLogin:false,
+            level : 12,
+            seen :false
+        }
+    })
+</script>
+</html>
+
+
+<!-- HTML（内容），css（样式），js（行为move，click） -->
+<!-- vue是一个js框架，在是JavaScript基础之上封装的一个框架 -->
